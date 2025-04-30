@@ -2,10 +2,10 @@
   "name": "no-as-service",
   "version": "1.0.0",
   "description": "A lightweight API that returns random rejection or no reasons.",
-  "main": "src/index.js",
+  "main": "api-server/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node .",
     "deduplicate": "node tools/deduplicate.js"
   },
   "author": "hotheadhacker",

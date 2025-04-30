@@ -85,11 +85,24 @@ node . --port 3000 --rate 0
 ## 📁 Project Structure
 
 ```text
-no-as-service/
-├── index.js            # Express API
-├── reasons.json        # 1000+ universal rejection reasons
-├── package.json
-└── README.md
+├── 📂 api-server            # Server sources
+|   └── 📜 index.js          # Endpoint for `/no`
+├── 📂 assets                # Assets for the repo and project
+|   ├── 📂 imgs              # Images
+|   |   └── 🌄 naas.png      # Header for the README
+|   └── 📃 reasons.json      # Internationalized variants of "no"
+├── 📂 lib                   # Common library code
+|   ├── 📜 cmpStr.js         # Basic string comparator
+|   ├── 📜 intArg.js         # turn an argument into an int
+|   ├── 📜 normalize.js      # sort and deduplicate an object or array
+|   ├── 📜 parseLanguages.js # parse the `accept-language` header
+|   ├── 📜 parseOptions.js   # parse CLI options
+|   ├── 📜 reasons.js        # wrapper file for `assets/reasons.json`
+|   └── 📜 toShuffled.js     # shuffle an array
+├── 📂 tools                 # Dev utilities
+|   └── 📜 deduplicate.js    # normalizer for `assets/reasons.json`
+├── 📃 package.json          # project config
+└── 📓 README.md             # This file
 ```
 
 ---
@@ -103,11 +116,16 @@ For reference, here’s the package config:
   "name": "no-as-service",
   "version": "1.0.0",
   "description": "A lightweight API that returns random rejection or no reasons.",
-  "main": "index.js",
+  "main": "api-server/index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node .",
+    "deduplicate": "node tools/deduplicate.js"
   },
   "author": "hotheadhacker",
+  "contributors": [
+    "Bryan Elliott <fordiman@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
