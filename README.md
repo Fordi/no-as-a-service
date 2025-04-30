@@ -1,9 +1,6 @@
 # ❌ No-as-a-Service
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/hotheadhacker/no-as-a-service/main/assets/imgs/image.png" width="800" alt="No-as-a-Service Banner"/>
-</p>
-
+![No-as-a-Service Banner](assets/imgs/naas.png)
 
 Ever needed a graceful way to say “no”?  
 This tiny API returns random, generic, creative, and sometimes hilarious rejection reasons — perfectly suited for any scenario: personal, professional, student life, dev life, or just because.
@@ -14,20 +11,21 @@ Built for humans, excuses, and humor.
 
 ## 🚀 API Usage
 
-**Base URL**
-```
-https://naas.isalman.dev/no
-```
-
-**Method:** `GET`  
-**Rate Limit:** `10 requests per minute per IP`
+- **Base URL**: [https://naas.isalman.dev/no]
+- **Method**: `GET`  
+- **Rate Limit**: 10 requests per minute per IP
+- **Headers**: `accept-language` will select from the languages available in `assets/reasons.json`
 
 ### 🔄 Example Request
+
 ```http
 GET /no
+Accept-language: en-US,en;q=0.9
+...
 ```
 
 ### ✅ Example Response
+
 ```json
 {
   "reason": "This feels like something Future Me would yell at Present Me for agreeing to."
@@ -43,42 +41,50 @@ Use it in apps, bots, landing pages, Slack integrations, rejection letters, or w
 Want to run it yourself? It’s lightweight and simple.
 
 ### 1. Clone this repository
+
 ```bash
 git clone https://github.com/hotheadhacker/no-as-a-service.git
 cd no-as-a-service
 ```
 
 ### 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Start the server
+
 ```bash
 npm start
 ```
 
-The API will be live at:
-```
-http://localhost:3000/no
-```
+The API will be live at: [http://localhost:3000/no]
 
 You can also change the port using an environment variable:
+
 ```bash
 PORT=5000 npm start
 ```
 
 You can disable / configure rate limiting by starting with the `LIMIT_RATE` environment variable
+
 ```bash
 LIMIT_RATE=0 npm start # start with limiting disabled
 LIMIT_RATE=20 npm start # start with limit at 20 requests per minute
+```
+
+You can also do these things with command-line arguments by invoking the project directly (npm eats CLI arguments):
+
+```bash
+node . --port 3000 --rate 0
 ```
 
 ---
 
 ## 📁 Project Structure
 
-```
+```text
 no-as-service/
 ├── index.js            # Express API
 ├── reasons.json        # 1000+ universal rejection reasons
@@ -121,7 +127,6 @@ Created with creative stubbornness by [hotheadhacker](https://github.com/hothead
 ## 📄 License
 
 MIT — do whatever, just don’t say yes when you should say no.
-
 
 ---
 
